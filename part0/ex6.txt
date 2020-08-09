@@ -1,0 +1,7 @@
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server-->browser: Status code 201 Created
+note over browser:
+the js script runs a callback function to update the list of notes
+instead of redirecting the page to update the list of notes
+thus it does not need to reload the page
+end note
