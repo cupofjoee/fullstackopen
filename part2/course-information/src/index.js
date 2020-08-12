@@ -1,0 +1,78 @@
+import React, {useState} from 'react';
+import ReactDOM from 'react-dom';
+// import Course from './Course';
+
+// const App = () => {
+//   const course = [
+//     {
+//       name: 'Half Stack application development',
+//       id: 1,
+//       parts: [
+//         {
+//           name: 'Fundamentals of React',
+//           exercises: 10
+//         },
+//         {
+//           name: 'Using props to pass data',
+//           exercises: 7
+//         },
+//         {
+//           name: 'State of a component',
+//           exercises: 14
+//         },
+//         {
+//           name: 'Redux',
+//           exercises: 11
+//         }
+//       ]
+//     },
+//     {
+//       name: 'Node.js',
+//       id: 2,
+//       parts: [
+//         {
+//           name: 'Routing',
+//           exercises: 3,
+//           id: 1
+//         },
+//         {
+//           name: 'Middlewares',
+//           exercises: 7,
+//           id:2
+//         }
+//       ]
+//     }
+//   ]
+
+//   return (
+//     <div>
+//       {course.map((course) => <Course course={course} />)}
+//     </div>
+//   )
+// }
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes)
+
+  const addNote = (event) => {
+    event.preventDefault()
+    console.log('button clicked', event.target)
+  }
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
+      <form onSubmit={addNote}>
+        <input />
+        <button type="submit">save</button>
+      </form>   
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
+
