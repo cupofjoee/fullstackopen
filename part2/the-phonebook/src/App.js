@@ -3,12 +3,15 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Person from './components/Person'
 import personService from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
   const [ persons, setPersons ] = useState([]) 
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ newFilter, setNewFilter ] = useState('')
+  const [ message, setMessage ] = useState(null)
+  const [ isError, setIsError ] = useState(false)
 
   const hook = () => {
     personService
@@ -53,18 +56,35 @@ const App = () => {
           setPersons(persons.concat(newPerson))
           setNewName("")
           setNewNumber("")
+          setMessage(`Added ${person.name}`)
+          setIsError(false)
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
         })
-        .catch(error => console.log('fail adding new contact'))
+
   }
 
   const updatePersonId = (id, changedPerson) => {
     const result = window.confirm(`${changedPerson.name} is already added to phonebook,\
     replace the old number with a new one?`)
     if (result) {
-      personService.update(id, changedPerson)
-      setPersons(persons.map(person => person.id !== id ? person : changedPerson))
-      setNewName("")
-      setNewNumber("")
+      personService
+        .update(id, changedPerson)
+        .then(changedPerson => {
+          console.log("HERE")
+          setPersons(persons.map(person => person.id !== id ? person : changedPerson))
+        })
+        .catch(error => {
+          setMessage(`Information of ${changedPerson.name} has already been removed from server`)
+          setIsError(true)
+          setPersons(persons.filter(person => person.id !== id))
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
+        })
+        setNewName("")
+        setNewNumber("")
     }
   }
   
@@ -79,6 +99,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={message} isError={isError} />
       <Filter value={newFilter} onChange={handleFilterChange} />
       <h2>add a new</h2>
       <PersonForm 
