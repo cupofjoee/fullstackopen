@@ -41,6 +41,7 @@ const App = () => {
       var person
       for (person of persons) {
           if (person.name.toLowerCase() === newName.toLowerCase()) {
+            console.log(person.id)
             updatePersonId(person.id, {...person, number: newNumber})
             return null
           }
@@ -61,6 +62,17 @@ const App = () => {
             setMessage(null)
           }, 5000)
         })
+        .catch(
+          error => {
+            console.log("HEY, IT'S HERE")
+            console.log(error.response.data)
+            setMessage(error.response.data)
+            setIsError(true)
+            setTimeout(() => {
+              setMessage(null)
+            }, 5000)
+          }
+        )
 
   }
 
