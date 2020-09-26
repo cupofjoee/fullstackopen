@@ -41,7 +41,6 @@ const App = () => {
       var person
       for (person of persons) {
           if (person.name.toLowerCase() === newName.toLowerCase()) {
-            console.log("duplicate name")
             updatePersonId(person.id, {...person, number: newNumber})
             return null
           }
@@ -72,7 +71,6 @@ const App = () => {
       personService
         .update(id, changedPerson)
         .then(changedPerson => {
-          console.log("HERE")
           setPersons(persons.map(person => person.id !== id ? person : changedPerson))
         })
         .catch(error => {
