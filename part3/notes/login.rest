@@ -1,0 +1,31 @@
+post http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "teddy",
+  "password": "teddy"
+}
+
+
+###
+
+post http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "teddy",
+  "name": "teddy",
+  "password": "teddy"
+}
+
+
+###
+
+post http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlZGR5IiwiaWQiOiI1Zjg5NWE2YTI3Yjk0YTM5ODAwM2U1YWEiLCJpYXQiOjE2MDI4MzcxMDR9._cb4cCkJN-qiUtlK6GscPmBnIuGAdPxYuHx5OXfwK-0
+
+{
+  "content": "Token atuhentication is okay",
+  "important": true
+}

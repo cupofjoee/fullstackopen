@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 const User = require('../models/user')
-const test_helper = require('../tests/test_helper')
 
 usersRouter.get('/', async (request, response) => {
   const users = await User.find({}).populate('notes', {
