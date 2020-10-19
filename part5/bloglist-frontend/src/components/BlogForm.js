@@ -25,6 +25,7 @@ const BlogForm = ({ handleCreate }) => {
         <div>
           title
           <input
+            className="inputTitle"
             type="text"
             value={title}
             name="Title"
@@ -34,6 +35,7 @@ const BlogForm = ({ handleCreate }) => {
         <div>
           author
           <input
+            className="inputAuthor"
             type="text"
             value={author}
             name="Author"
@@ -43,6 +45,7 @@ const BlogForm = ({ handleCreate }) => {
         <div>
           url
           <input
+            className="inputUrl"
             type="text"
             value={url}
             name="Url"
