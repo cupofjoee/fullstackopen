@@ -12,7 +12,8 @@
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "logs:prod": "heroku logs --tail",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "build:dev": "npm run build:ui && npm run dev"
   },
   "author": "",
   "license": "ISC",
