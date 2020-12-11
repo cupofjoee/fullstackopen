@@ -13,7 +13,8 @@
     "logs:prod": "heroku logs --tail",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build:dev": "npm run build:ui && npm run dev"
+    "build:dev": "npm run build:ui && npm run dev",
+    "start:test": "cross-env NODE_ENV=test node index.js"
   },
   "author": "",
   "license": "ISC",

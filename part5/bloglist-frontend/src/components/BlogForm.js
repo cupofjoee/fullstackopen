@@ -14,6 +14,10 @@ const BlogForm = ({ handleCreate }) => {
       url: url,
     }
 
+    setTitle("")
+    setAuthor("")
+    setUrl("")
+
     handleCreate(blog)
   }
 

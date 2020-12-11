@@ -29,5 +29,9 @@ const update = (blog) => {
   return request.then(response => response.data)
 }
 
+const remove = (blog) => {
+  const request = axios.delete(`${baseUrl}/${blog.id}`, config)
+}
+
 export default { getAll, create, update, setToken }
 
